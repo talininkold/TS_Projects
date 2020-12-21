@@ -1,10 +1,11 @@
 import { User } from "./User"
 
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number,
     lng: number
   }
+  getInfoPopUp(): string
 }
 
 export class CustomMap {
@@ -21,12 +22,20 @@ export class CustomMap {
   }
 
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const popUp = new google.maps.InfoWindow({
+      content: mappable.getInfoPopUp()
+    })
+
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    })
+    
+    marker.addListener('click', () => {
+      popUp.open(this.googleMap, marker)
     })
   }
 }
