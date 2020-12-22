@@ -1,22 +1,8 @@
 "use strict";
-var SortData = /** @class */ (function () {
-    function SortData(collection) {
-        this.collection = collection;
-    }
-    SortData.prototype.sort = function () {
-        var length = this.collection.length;
-        for (var i = 0; i < length; i++) {
-            for (var j = 0; j < length - i - 1; j++) {
-                if (this.collection[j] > this.collection[j + 1]) {
-                    var max = this.collection[j];
-                    this.collection[j] = this.collection[j + 1];
-                    this.collection[j + 1] = max;
-                }
-            }
-        }
-    };
-    return SortData;
-}());
-var array = new SortData([-10, 5, 0, -1]);
+Object.defineProperty(exports, "__esModule", { value: true });
+var NumbersCollection_1 = require("./NumbersCollection");
+var SortData_1 = require("./SortData");
+var numbers = new NumbersCollection_1.NumbersCollection([-10, 500, 0, -1, 3]);
+var array = new SortData_1.SortData(numbers);
 array.sort();
-console.log(array.collection);
+console.log(numbers.data);
