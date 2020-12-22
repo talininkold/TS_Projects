@@ -1,15 +1,12 @@
 import { CsvFileReader } from "./CsvFileReader"
+import { FootballReader } from "./FootbalReader"
+import { MatchResults } from "./matchResults"
 
-const file = new CsvFileReader('football.csv')
+const file = new FootballReader('football.csv')
 file.read()
+// console.log(file.data)
 
 let manUnitedWins = 0
-
-enum MatchResults {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D'
-}
 
 for (let dataLine of file.data) {
   if (dataLine[1] === 'Man United' && dataLine[5] === MatchResults.HomeWin) {
