@@ -1,3 +1,4 @@
+import { CsvFileReader } from "./CsvFileReader";
 import { MatchResults } from "./matchResults";
 import { TableLine } from "./types";
 import { stringToDataFormat } from "./utils";
@@ -11,6 +12,10 @@ export class FootballReader {
   loadData: TableLine[] = []
 
   constructor(public reader: DataReader) {}
+
+  static fromCsv(title: string):FootballReader {
+    return new FootballReader(new CsvFileReader(title))
+  }
 
   load(): void {
     this.reader.read()
