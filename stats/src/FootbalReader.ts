@@ -1,9 +1,8 @@
 import { MatchResults } from "./matchResults";
+import { TableLine } from "./types";
 import { stringToDataFormat } from "./utils";
 
-type TableLine = [Date, string, string, number, number, MatchResults, string]
-
-interface DataReader {
+export interface DataReader {
   data: string[][],
   read(): void
 }
